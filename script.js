@@ -52,7 +52,7 @@ const textSequence = [
     },
 
     {
-        text: "TO MY",
+        text: "TO MY ",
         time: 1000
     },
 
