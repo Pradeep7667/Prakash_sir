@@ -1,5 +1,4 @@
 
-
 /* =========================================
    GET ELEMENTS
 ========================================= */
@@ -20,8 +19,9 @@ const finalSection = document.getElementById("finalSection");
 const birthdaySong = document.getElementById("birthdaySong");
 const birthdayMessage = document.getElementById("birthdayMessage");
 
+
 /* =========================================
-   SETTINGS
+   TEXT SETTINGS
 ========================================= */
 
 const textSequence = [
@@ -79,10 +79,10 @@ async function startSurprise() {
 
     console.log("Birthday surprise started.");
 
-    /*
-        Browser audio autoplay restriction solved:
-        The audio is started from the user's button click.
-    */
+
+    /* -----------------------------------------
+       Start Music
+    ----------------------------------------- */
 
     try {
 
@@ -94,32 +94,45 @@ async function startSurprise() {
 
     } catch (error) {
 
-        console.log("Music could not start:", error);
+        console.log(
+            "Music could not start:",
+            error
+        );
 
     }
 
 
-    /* Hide start screen */
+    /* -----------------------------------------
+       Hide Start Screen
+    ----------------------------------------- */
 
     startScreen.classList.add("hidden");
 
 
-    /* Show main screen */
+    /* -----------------------------------------
+       Show Main Screen
+    ----------------------------------------- */
 
     mainScreen.classList.remove("hidden");
 
 
-    /* Start text sequence */
+    /* -----------------------------------------
+       Play Text Animation
+    ----------------------------------------- */
 
     await playTextSequence();
 
 
-    /* Start gallery */
+    /* -----------------------------------------
+       Start Gallery
+    ----------------------------------------- */
 
     await startGallery();
 
 
-    /* Show final screen */
+    /* -----------------------------------------
+       Show Final Screen
+    ----------------------------------------- */
 
     showFinalScreen();
 
@@ -139,9 +152,7 @@ function playTextSequence() {
 
         function showNextText() {
 
-            /*
-                Sequence complete
-            */
+            /* Sequence completed */
 
             if (index >= textSequence.length) {
 
@@ -155,41 +166,33 @@ function playTextSequence() {
             const item = textSequence[index];
 
 
-            /*
-                Remove old animation
-            */
+            /* Remove old animation */
 
             animatedText.classList.remove("glitch");
 
 
-            /*
-                Force browser reflow.
-                This makes animation restart every time.
-            */
+            /* Force animation restart */
 
             void animatedText.offsetWidth;
 
 
-            /*
-                Set new text
-            */
+            /* Set new text */
 
             animatedText.textContent = item.text;
 
 
-            /*
-                Start animation
-            */
+            /* Start animation */
 
             animatedText.classList.add("glitch");
 
 
-            console.log("Showing:", item.text);
+            console.log(
+                "Showing:",
+                item.text
+            );
 
 
-            /*
-                Wait before next text
-            */
+            /* Wait before next text */
 
             setTimeout(() => {
 
@@ -220,31 +223,23 @@ function startGallery() {
         console.log("Gallery started.");
 
 
-        /*
-            Hide text
-        */
+        /* Hide text section */
 
         textSection.classList.add("hidden");
 
 
-        /*
-            Show gallery
-        */
+        /* Show gallery */
 
         gallerySection.classList.remove("hidden");
 
 
-        /*
-            Get all photos
-        */
+        /* Get photos */
 
         const photos =
             galleryTrack.querySelectorAll(".photo-card");
 
 
-        /*
-            No photos found
-        */
+        /* No photos */
 
         if (photos.length === 0) {
 
@@ -260,19 +255,18 @@ function startGallery() {
         let currentIndex = 0;
 
 
-        /*
-            Reset gallery position
-        */
+        /* Reset gallery position */
 
         galleryTrack.style.transform =
             "translateX(0)";
 
 
-        /*
-            Wait before moving first photo
-        */
+        /* Start after one second */
 
-        setTimeout(moveNextPhoto, 1000);
+        setTimeout(
+            moveNextPhoto,
+            1000
+        );
 
 
         function moveNextPhoto() {
@@ -280,7 +274,7 @@ function startGallery() {
             currentIndex++;
 
 
-            /*  All photos completed  */
+            /* All photos completed */
 
             if (currentIndex >= photos.length) {
 
@@ -302,12 +296,11 @@ function startGallery() {
             const gap = 18;
 
 
-            /*
-                Calculate movement
-            */
+            /* Calculate movement */
 
             const moveDistance =
-                currentIndex * (photoWidth + gap);
+                currentIndex *
+                (photoWidth + gap);
 
 
             galleryTrack.style.transform =
@@ -320,9 +313,7 @@ function startGallery() {
             );
 
 
-            /*
-                Move to next photo
-            */
+            /* Move to next photo */
 
             setTimeout(
                 moveNextPhoto,
@@ -340,32 +331,27 @@ function startGallery() {
    FINAL SCREEN
 ========================================= */
 
-/* =========================================
-   FINAL SCREEN
-========================================= */
-
 function showFinalScreen() {
 
     console.log("Final screen started.");
 
-    /*
-        Hide gallery
-    */
+
+    /* Hide gallery */
 
     gallerySection.classList.add("hidden");
 
 
-    /*
-        Show final screen
-    */
+    /* Show final section */
 
     finalSection.classList.remove("hidden");
 
 
-    /*
-        Start typing message
-        after a small delay
-    */
+    /* Reset message scroll */
+
+    birthdayMessage.scrollTop = 0;
+
+
+    /* Start typing after one second */
 
     setTimeout(() => {
 
@@ -376,26 +362,15 @@ function showFinalScreen() {
 }
 
 
-
-
-
-
-
-
-
-
-
-/* =========================================
-   BIRTHDAY TYPEWRITER
-========================================= */
-
 /* =========================================
    BIRTHDAY TYPEWRITER
 ========================================= */
 
 function typeBirthdayMessage() {
 
- const message =`Wishing you a very Happy Birthday, Dear Guru Ji! ❤️
+    const message =
+
+`Wishing you a very Happy Birthday, Dear Guru Ji! ❤️
 
 May your life always be filled with happiness, good health, peace and success.
 
@@ -425,60 +400,76 @@ Once again, a very Happy Birthday, Guru Ji! 🎂❤️✨`;
 
     function typeNextCharacter() {
 
-        if (index < message.length) {
+        /* Typing completed */
 
-            birthdayMessage.textContent +=
-                message.charAt(index);
+        if (index >= message.length) {
 
-            index++;
-
-
-            /*
-                Automatically scroll ONLY
-                inside the birthday message box
-            */
-
-            birthdayMessage.scrollTop = birthdayMessage.scrollHeight;
-
-
-            let delay = typingSpeed;
-
-
-            const currentCharacter =
-                message.charAt(index - 1);
-
-
-            /*
-                Natural pauses
-            */
-
-            if (currentCharacter === ".") {
-
-                delay = 350;
-
-            }
-
-
-            if (currentCharacter === ",") {
-
-                delay = 180;
-
-            }
-
-
-            if (currentCharacter === "\n") {
-
-                delay = 500;
-
-            }
-
-
-            setTimeout(
-                typeNextCharacter,
-                delay
+            console.log(
+                "Birthday message completed."
             );
 
+            return;
+
         }
+
+
+        /* Add next character */
+
+        birthdayMessage.textContent +=
+            message.charAt(index);
+
+
+        index++;
+
+
+        /* -----------------------------------------
+           AUTO SCROLL INSIDE MESSAGE BOX
+        ----------------------------------------- */
+
+        birthdayMessage.scrollTop =
+            birthdayMessage.scrollHeight;
+
+
+        /* Default typing speed */
+
+        let delay = typingSpeed;
+
+
+        const currentCharacter =
+            message.charAt(index - 1);
+
+
+        /* Pause after full stop */
+
+        if (currentCharacter === ".") {
+
+            delay = 350;
+
+        }
+
+
+        /* Pause after comma */
+
+        if (currentCharacter === ",") {
+
+            delay = 180;
+
+        }
+
+
+        /* Pause after new line */
+
+        if (currentCharacter === "\n") {
+
+            delay = 500;
+
+        }
+
+
+        setTimeout(
+            typeNextCharacter,
+            delay
+        );
 
     }
 
@@ -488,45 +479,30 @@ Once again, a very Happy Birthday, Guru Ji! 🎂❤️✨`;
 }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 /* =========================================
-   OPTIONAL:
    KEEP MUSIC PLAYING
 ========================================= */
 
-birthdaySong.addEventListener("ended", () => {
+birthdaySong.addEventListener(
+    "ended",
+    () => {
 
-    /*
-        If you don't want the song to repeat,
-        remove the code below.
-    */
+        birthdaySong.currentTime = 0;
 
-    birthdaySong.currentTime = 0;
+        birthdaySong.play().catch(() => {
 
-    birthdaySong.play().catch(() => {
-        console.log("Music ended.");
-    });
+            console.log(
+                "Music could not restart."
+            );
 
-});
+        });
+
+    }
+);
 
 
 /* =========================================
-   DEBUG MESSAGE
+   DEBUG
 ========================================= */
 
 console.log(
