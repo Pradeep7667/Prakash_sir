@@ -57,7 +57,7 @@ const textSequence = [
     },
 
     {
-        text: "LOVE",
+        text: "LOVELY GURU JI ❤️❤️💕🎂🍰🍥",
         time: 1600
     }
 
