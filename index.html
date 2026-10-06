@@ -1,6 +1,7 @@
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -42,8 +43,10 @@
     <main id="mainScreen" class="main-screen hidden">
 
         <!-- Background effects -->
+
         <div class="scan-lines"></div>
         <div class="vertical-lines"></div>
+
 
         <!-- =====================================
              TEXT ANIMATION
@@ -85,31 +88,34 @@
                     <div class="photo-card">
                         <img src="5.jpg" alt="Birthday Photo 5">
                     </div>
-                     <div class="photo-card">
+
+                    <div class="photo-card">
                         <img src="6.jpeg" alt="Birthday Photo 6">
                     </div>
-                     <div class="photo-card">
+
+                    <div class="photo-card">
                         <img src="7.jpeg" alt="Birthday Photo 7">
                     </div>
 
-                   <div class="photo-card">
-                        <img src="8.jpeg" alt="Birthday Photo 8 ">
+                    <div class="photo-card">
+                        <img src="8.jpeg" alt="Birthday Photo 8">
                     </div>
-                     <div class="photo-card">
+
+                    <div class="photo-card">
                         <img src="9.jpeg" alt="Birthday Photo 9">
                     </div>
-                     <div class="photo-card">
-                        <img src="10.jpeg" alt="Birthday Photo 10">
 
+                    <div class="photo-card">
+                        <img src="10.jpeg" alt="Birthday Photo 10">
                     </div>
 
-                     <div class="photo-card">
+                    <div class="photo-card">
                         <img src="11.jpeg" alt="Birthday Photo 11">
                     </div>
-                     <div class="photo-card">
+
+                    <div class="photo-card">
                         <img src="12.jpeg" alt="Birthday Photo 12">
                     </div>
-
 
                 </div>
 
@@ -136,24 +142,35 @@
 
                 </div>
 
-                <h2>HAPPY BIRTHDAY  DEAR GURU JI ❤️</h2>
 
-                <!-- <div id="birthdayMessage" class="birthday-message"></div> -->
+                <h2>
+                    HAPPY BIRTHDAY DEAR GURU JI ❤️
+                </h2>
 
 
+                <!-- =================================
+                     BIRTHDAY MESSAGE BOX
+                ================================== -->
+
+                <div class="message-box">
+
+                    <div class="message-box-header">
+
+                        <span>💌</span>
+
+                        <span>
+                            A Special Message For You
+                        </span>
+
+                    </div>
 
 
-<div class="message-box">
+                    <div
+                        id="birthdayMessage"
+                        class="birthday-message"
+                    ></div>
 
-    <div class="message-box-header">
-        <span>💌</span>
-        <span>A Special Message For You</span>
-    </div>
-    <div id="birthdayMessage"></div>
-
-    <!-- <div id="secretMessage" class="message-content"></div> -->
-
-</div>
+                </div>
 
             </div>
 
@@ -163,19 +180,27 @@
 
 
     <!-- =========================================
-         AUDIO
+         BIRTHDAY MUSIC
     ========================================== -->
 
     <audio id="birthdaySong" preload="auto">
 
-        <source src="/birthday.mp3" type="audio/mpeg">
+        <source
+            src="birthday.mp3"
+            type="audio/mpeg"
+        >
 
         Your browser does not support audio.
 
     </audio>
 
 
+    <!-- =========================================
+         JAVASCRIPT
+    ========================================== -->
+
     <script src="script.js"></script>
 
 </body>
+
 </html>
