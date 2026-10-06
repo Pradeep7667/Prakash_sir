@@ -1,0 +1,776 @@
+
+/* =========================================
+   RESET
+========================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+html,
+body {
+    width: 100%;
+    height: 100%;
+}
+
+
+body {
+    overflow: hidden;
+    background: #020103;
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+   
+}
+#body{ scrollbar-width: thin; scrollbar-color: rgba(255, 255, 255, 0.35) transparent; 
+}
+
+
+/* =========================================
+   COMMON
+========================================= */
+
+.hidden {
+    display: none !important;
+}
+
+
+/* =========================================
+   START SCREEN
+========================================= */
+
+.start-screen {
+    position: fixed;
+    inset: 0;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background:
+        radial-gradient(
+            circle at center,
+            rgba(255, 0, 170, 0.12),
+            transparent 45%
+        ),
+        #020103;
+
+    z-index: 1000;
+}
+
+
+.start-content {
+    text-align: center;
+}
+
+
+.start-number {
+    font-size: 14px;
+    letter-spacing: 8px;
+    color: #ff2abf;
+
+    text-shadow:
+        0 0 10px #ff009d,
+        0 0 25px #ff009d;
+
+    margin-bottom: 15px;
+}
+
+
+.start-content h1 {
+    font-size: clamp(40px, 8vw, 90px);
+    letter-spacing: 8px;
+
+    text-shadow:
+        0 0 5px white,
+        0 0 15px #ff00aa,
+        0 0 35px #ff00aa;
+
+    margin-bottom: 15px;
+}
+
+
+.start-content p {
+    color: rgba(255, 255, 255, 0.65);
+    font-size: 14px;
+    letter-spacing: 2px;
+
+    margin-bottom: 30px;
+}
+
+
+#startButton {
+    border: 1px solid #ff19b7;
+    background: transparent;
+
+    color: white;
+
+    padding: 14px 30px;
+
+    font-size: 13px;
+    font-weight: bold;
+    letter-spacing: 3px;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 0 10px rgba(255, 0, 170, .4),
+        inset 0 0 10px rgba(255, 0, 170, .08);
+
+    transition: .3s ease;
+}
+
+
+#startButton:hover {
+    background: #ff009d;
+    box-shadow:
+        0 0 15px #ff009d,
+        0 0 35px #ff009d;
+
+    transform: scale(1.04);
+}
+
+
+/* =========================================
+   MAIN SCREEN
+========================================= */
+
+.main-screen {
+    position: fixed;
+    inset: 0;
+
+    overflow: hidden;
+
+    background:
+        radial-gradient(
+            circle at center,
+            rgba(255, 0, 160, .08),
+            transparent 45%
+        ),
+        #020103;
+}
+
+
+/* =========================================
+   BACKGROUND EFFECTS
+========================================= */
+
+.scan-lines {
+    position: absolute;
+    inset: 0;
+
+    pointer-events: none;
+
+    background:
+        repeating-linear-gradient(
+            0deg,
+            rgba(255, 255, 255, .025) 0px,
+            rgba(255, 255, 255, .025) 1px,
+            transparent 1px,
+            transparent 5px
+        );
+
+    z-index: 10;
+
+    pointer-events: none;
+}
+
+
+.vertical-lines {
+    position: absolute;
+    inset: 0;
+
+    background:
+        repeating-linear-gradient(
+            90deg,
+            transparent 0px,
+            transparent 8px,
+            rgba(255, 0, 160, .025) 9px,
+            transparent 10px,
+            transparent 25px
+        );
+
+    animation: backgroundMove 8s linear infinite;
+
+    pointer-events: none;
+}
+
+
+@keyframes backgroundMove {
+
+    from {
+        transform: translateX(0);
+    }
+
+    to {
+        transform: translateX(25px);
+    }
+
+}
+
+
+/* =========================================
+   TEXT SECTION
+========================================= */
+
+.text-section {
+    position: absolute;
+    inset: 0;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.neon-text {
+
+    min-height: 100px;
+
+    padding: 20px;
+
+    text-align: center;
+
+    font-size: clamp(42px, 8vw, 100px);
+
+    font-weight: 800;
+
+    letter-spacing: 4px;
+
+    color: white;
+
+    text-shadow:
+        0 0 4px white,
+        0 0 10px #ff24c0,
+        0 0 25px #ff00aa,
+        0 0 50px #ff009d;
+
+    animation: neonPulse 1s ease-in-out infinite alternate;
+}
+
+
+@keyframes neonPulse {
+
+    from {
+        opacity: .75;
+        transform: scale(.98);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+
+}
+
+
+/* Text glitch */
+
+.glitch {
+
+    animation:
+        neonPulse 1s infinite alternate,
+        glitchEffect .15s infinite;
+
+}
+
+
+@keyframes glitchEffect {
+
+    0% {
+        transform: translate(0);
+    }
+
+    25% {
+        transform: translate(2px, -1px);
+    }
+
+    50% {
+        transform: translate(-2px, 1px);
+    }
+
+    75% {
+        transform: translate(1px, 2px);
+    }
+
+    100% {
+        transform: translate(0);
+    }
+
+}
+
+
+/* =========================================
+   GALLERY
+========================================= */
+
+.gallery-section {
+
+    position: absolute;
+    inset: 0;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+
+.gallery-container {
+
+    width: min(900px, 90vw);
+    height: min(470px, 65vh);
+
+    overflow: hidden;
+
+    border: 1px solid rgba(255, 0, 170, .45);
+
+    background: rgba(5, 0, 7, .8);
+
+    box-shadow:
+        0 0 15px rgba(255, 0, 170, .3),
+        0 0 50px rgba(255, 0, 170, .12);
+
+}
+
+
+.gallery-track {
+
+    height: 100%;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 18px;
+
+    padding: 25px;
+
+    transition:
+        transform 1s cubic-bezier(.2, .8, .2, 1);
+
+}
+
+
+.photo-card {
+
+    flex: 0 0 auto;
+
+    width: 260px;
+    height: 100%;
+
+    overflow: hidden;
+
+    border: 1px solid rgba(255, 0, 170, .7);
+
+    box-shadow:
+        0 0 15px rgba(255, 0, 170, .25);
+
+}
+
+
+.photo-card img {
+
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+
+    display: block;
+
+    transition: transform .6s ease;
+
+}
+
+
+.photo-card img:hover {
+    transform: scale(1.04);
+}
+
+
+/* =========================================
+   FINAL SCREEN
+========================================= */
+
+.final-section {
+
+    position: absolute;
+    inset: 0;
+
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+
+}
+
+
+.final-content {
+
+    text-align: center;
+
+    animation: finalAppear 1.2s ease forwards;
+
+}
+
+
+.final-image-wrapper {
+
+    width: min(360px, 70vw);
+    height: min(360px, 70vw);
+
+    margin: auto;
+
+    overflow: hidden;
+
+    border: 2px solid #ff20b7;
+
+    box-shadow:
+        0 0 15px #ff20b7,
+        0 0 40px rgba(255, 0, 170, .5),
+        0 0 80px rgba(255, 0, 170, .2);
+
+}
+
+
+.final-image {
+
+    width: 100%;
+    height: 100%;
+   margin-top: 33px;
+    object-fit: cover;
+}
+
+
+.final-content h2 {
+
+    margin-top: 22px;
+
+    font-size: clamp(24px, 5vw, 50px);
+
+    letter-spacing: 3px;
+
+    text-shadow:
+        0 0 5px white,
+        0 0 15px #ff00aa,
+        0 0 35px #ff00aa;
+
+}
+
+
+/* =========================================
+   BIRTHDAY TYPING MESSAGE
+========================================= */
+
+.birthday-message {
+    width: min(850px, 88vw);
+
+    margin: 18px auto 0;
+
+    color: rgba(255, 255, 255, 0.82);
+
+    font-size: clamp(14px, 1.4vw, 18px);
+
+    line-height: 1.8;
+
+    letter-spacing: 0.3px;
+
+    text-align: center;
+
+    min-height: 150px;
+
+    text-shadow:
+        0 0 5px rgba(255, 0, 170, 0.35);
+
+    white-space: pre-wrap;
+}
+
+
+/* Blinking cursor */
+
+.birthday-message::after {
+    content: "|";
+
+    color: #ff27bb;
+
+    font-weight: bold;
+
+    margin-left: 3px;
+
+    text-shadow:
+        0 0 8px #ff00aa,
+        0 0 15px #ff00aa;
+
+    animation: cursorBlink 0.7s infinite;
+}
+
+
+@keyframes cursorBlink {
+
+    0%,
+    45% {
+        opacity: 1;
+    }
+
+    50%,
+    100% {
+        opacity: 0;
+    }
+
+}
+
+
+/* Mobile */
+
+@media (max-width: 600px) {
+
+    .birthday-message {
+
+        width: 88vw;
+
+        font-size: 13px;
+
+        line-height: 1.7;
+
+        max-height: 170px;
+
+        overflow-y: auto;
+
+    }
+
+}
+/* ================================
+   BIRTHDAY MESSAGE BOX
+================================ */
+
+.message-box {
+    width: min(90%, 700px);
+    margin: 30px auto;
+    padding: 0;
+
+    background: rgba(255, 255, 255, 0.07);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    border-radius: 18px;
+
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+
+    box-shadow:
+        0 10px 40px rgba(0, 0, 0, 0.35),
+        inset 0 0 25px rgba(255, 255, 255, 0.03);
+
+    overflow: hidden;
+}
+
+
+/* Message box heading */
+
+.message-box-header {
+    padding: 15px 20px;
+
+    font-family: 'Montserrat', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+
+    letter-spacing: 1px;
+
+    background: rgba(255, 255, 255, 0.08);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+
+/* Actual message area */
+
+.message-content {
+    height: 260px;
+
+    padding: 22px;
+
+    overflow-y: auto;
+    overflow-x: hidden;
+
+    font-family: 'Montserrat', sans-serif;
+    font-size: 15px;
+    line-height: 1.8;
+
+    text-align: left;
+
+    white-space: pre-wrap;
+
+    scroll-behavior: smooth;
+
+    box-sizing: border-box;
+}
+
+
+/* Scrollbar */
+
+.message-content::-webkit-scrollbar {
+    width: 6px;
+}
+
+.message-content::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.04);
+}
+
+.message-content::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.25);
+    border-radius: 10px;
+}
+
+.message-content::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.45);
+}
+
+
+/* Mobile */
+
+@media (max-width: 600px) {
+
+    .message-box {
+        width: 92%;
+        border-radius: 15px;
+    }
+
+    .message-content {
+        height: 230px;
+        padding: 18px;
+        font-size: 14px;
+        line-height: 1.7;
+    }
+
+    .message-box-header {
+        font-size: 12px;
+        padding: 13px 16px;
+    }
+}
+
+
+
+
+
+
+@keyframes finalAppear {
+
+    from {
+
+        opacity: 0;
+
+        transform: scale(.75);
+
+        filter: blur(10px);
+
+    }
+
+    to {
+
+        opacity: 1;
+
+        transform: scale(1);
+
+        filter: blur(0);
+
+    }
+
+}
+
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 600px) {
+
+    .start-content h1 {
+        font-size: 45px;
+        letter-spacing: 5px;
+    }
+
+
+    .gallery-container {
+        width: 92vw;
+        height: 55vh;
+    }
+
+
+    .photo-card {
+        width: 65vw;
+    }
+
+
+    .neon-text {
+        font-size: 42px;
+        letter-spacing: 2px;
+    }
+
+}
+#birthdayMessage {
+    height: 260px;
+    max-height: 260px;
+
+    overflow-y: auto;
+    overflow-x: hidden;
+
+    padding: 20px;
+
+    box-sizing: border-box;
+
+    text-align: left;
+    line-height: 1.8;
+
+    white-space: pre-wrap;
+
+    border-radius: 18px;
+
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.20);
+
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+
+    scroll-behavior: smooth;
+}
+
+
+/* Scrollbar */
+
+#birthdayMessage::-webkit-scrollbar {
+    width: 6px;
+}
+
+#birthdayMessage::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+#birthdayMessage::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.35);
+    border-radius: 10px;
+}
+
+#birthdayMessage::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.55);
+}
+
+
+/* Mobile */
+
+@media (max-width: 600px) {
+
+    #birthdayMessage {
+        height: 230px;
+        max-height: 230px;
+
+        padding: 16px;
+
+        font-size: 14px;
+        line-height: 1.7;
+    }
+
+}
+

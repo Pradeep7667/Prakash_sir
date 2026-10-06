@@ -1,0 +1,181 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Birthday Surprise</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- =========================================
+         START SCREEN
+    ========================================== -->
+
+    <div id="startScreen" class="start-screen">
+
+        <div class="start-content">
+
+            <div class="start-number">03</div>
+
+            <h1>READY?</h1>
+
+            <p>Tap below to start the surprise</p>
+
+            <button id="startButton">
+                START SURPRISE
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <!-- =========================================
+         MAIN SCREEN
+    ========================================== -->
+
+    <main id="mainScreen" class="main-screen hidden">
+
+        <!-- Background effects -->
+        <div class="scan-lines"></div>
+        <div class="vertical-lines"></div>
+
+        <!-- =====================================
+             TEXT ANIMATION
+        ====================================== -->
+
+        <section id="textSection" class="text-section">
+
+            <div id="animatedText" class="neon-text"></div>
+
+        </section>
+
+
+        <!-- =====================================
+             PHOTO SLIDESHOW
+        ====================================== -->
+
+        <section id="gallerySection" class="gallery-section hidden">
+
+            <div class="gallery-container">
+
+                <div id="galleryTrack" class="gallery-track">
+
+                    <div class="photo-card">
+                        <img src="1.jpg" alt="Birthday Photo 1">
+                    </div>
+
+                    <div class="photo-card">
+                        <img src="2.jpg" alt="Birthday Photo 2">
+                    </div>
+
+                    <div class="photo-card">
+                        <img src="3.jpg" alt="Birthday Photo 3">
+                    </div>
+
+                    <div class="photo-card">
+                        <img src="4.jpg" alt="Birthday Photo 4">
+                    </div>
+
+                    <div class="photo-card">
+                        <img src="5.jpg" alt="Birthday Photo 5">
+                    </div>
+                     <div class="photo-card">
+                        <img src="6.jpeg" alt="Birthday Photo 6">
+                    </div>
+                     <div class="photo-card">
+                        <img src="7.jpeg" alt="Birthday Photo 7">
+                    </div>
+
+                   <div class="photo-card">
+                        <img src="8.jpeg" alt="Birthday Photo 8 ">
+                    </div>
+                     <div class="photo-card">
+                        <img src="9.jpeg" alt="Birthday Photo 9">
+                    </div>
+                     <div class="photo-card">
+                        <img src="10.jpeg" alt="Birthday Photo 10">
+
+                    </div>
+
+                     <div class="photo-card">
+                        <img src="11.jpeg" alt="Birthday Photo 11">
+                    </div>
+                     <div class="photo-card">
+                        <img src="12.jpeg" alt="Birthday Photo 12">
+                    </div>
+
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =====================================
+             FINAL SCREEN
+        ====================================== -->
+
+        <section id="finalSection" class="final-section hidden">
+
+            <div class="final-content">
+
+                <div class="final-image-wrapper">
+
+                    <img
+                        src="images/final.jpg"
+                        alt="Birthday"
+                        class="final-image"
+                    >
+
+                </div>
+
+                <h2>HAPPY BIRTHDAY  DEAR GURU JI ❤️</h2>
+
+                <!-- <div id="birthdayMessage" class="birthday-message"></div> -->
+
+
+
+
+<div class="message-box">
+
+    <div class="message-box-header">
+        <span>💌</span>
+        <span>A Special Message For You</span>
+    </div>
+    <div id="birthdayMessage"></div>
+
+    <!-- <div id="secretMessage" class="message-content"></div> -->
+
+</div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- =========================================
+         AUDIO
+    ========================================== -->
+
+    <audio id="birthdaySong" preload="auto">
+
+        <source src="/birthday.mp3" type="audio/mpeg">
+
+        Your browser does not support audio.
+
+    </audio>
+
+
+    <script src="script.js"></script>
+
+</body>
+</html>
